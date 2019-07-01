@@ -1,0 +1,407 @@
+  [1m[35m (690.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (147.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (12.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Books (20190624090639)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (95.6ms)[0m  [1m[35mCREATE TABLE "books" ("id" bigserial primary key, "title" character varying(40) NOT NULL, "price" float, "subject_id" integer, "description" text, "created_at" timestamp)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190624090639"]]
+  [1m[35m (43.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Subjects (20190624090736)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (136.1ms)[0m  [1m[35mCREATE TABLE "subjects" ("id" bigserial primary key, "name" character varying)[0m
+  [1m[36mSubject Create (0.7ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Physics"]]
+  [1m[36mSubject Create (0.6ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Chemistry"]]
+  [1m[36mSubject Create (0.6ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Mathematics"]]
+  [1m[36mSubject Create (0.7ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Psychology"]]
+  [1m[36mSubject Create (0.6ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Geograpy"]]
+  [1m[36mSubject Create (0.7ms)[0m  [1m[32mINSERT INTO "subjects" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Biology"]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190624090736"]]
+  [1m[35m (30.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-06-24 09:35:38.682972"], ["updated_at", "2019-06-24 09:35:38.682972"]]
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20190624112442)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (163.8ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "title" character varying, "text" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190624112442"]]
+  [1m[35m (24.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Article (20190624113104)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190624113104"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-24 17:15:19 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 546ms (Views: 537.4ms)
+Started GET "/assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" for 127.0.0.1 at 2019-06-24 17:15:20 +0530
+Started GET "/assets/application-1a6d20cf21d4dc079b3838079f9b8f9dd5a983053e109060eec5b3a81b4f1287.js" for 127.0.0.1 at 2019-06-24 17:15:20 +0530
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:15:51 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"Article3", "text"=>"This is article three"}, "commit"=>"Save"}
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 16.2ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:35:31 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"Article3", "text"=>"This is article three"}, "commit"=>"Save"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (44.1ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Article3"], ["text", "This is article three"], ["created_at", "2019-06-24 12:05:31.590384"], ["updated_at", "2019-06-24 12:05:31.590384"]]
+  [1m[35m (41.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 334ms (ActiveRecord: 99.3ms)
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:35:31 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 409ms (Views: 395.0ms | ActiveRecord: 2.0ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-24 17:35:53 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (56.4ms)
+Completed 200 OK in 71ms (Views: 58.3ms | ActiveRecord: 0.0ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:36:55 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"Rail is Awesome !", "text"=>"Yes, really it is."}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Rail is Awesome !"], ["text", "Yes, really it is."], ["created_at", "2019-06-24 12:06:55.843737"], ["updated_at", "2019-06-24 12:06:55.843737"]]
+  [1m[35m (35.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/2
+Completed 302 Found in 40ms (ActiveRecord: 36.3ms)
+Started GET "/articles/2" for 127.0.0.1 at 2019-06-24 17:36:55 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:38:51 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 300ms (Views: 218.6ms | ActiveRecord: 20.3ms)
+Started GET "/articles/2" for 127.0.0.1 at 2019-06-24 17:38:56 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+Started GET "/articles/3" for 127.0.0.1 at 2019-06-24 17:38:59 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:39:07 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-24 17:39:12 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:40:00 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"Latlong", "text"=>"Welcome to Latlong !"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (0.7ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Latlong"], ["text", "Welcome to Latlong !"], ["created_at", "2019-06-24 12:10:00.882519"], ["updated_at", "2019-06-24 12:10:00.882519"]]
+  [1m[35m (82.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/3
+Completed 302 Found in 91ms (ActiveRecord: 83.6ms)
+Started GET "/articles/3" for 127.0.0.1 at 2019-06-24 17:40:00 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+Started GET "/articles/" for 127.0.0.1 at 2019-06-24 17:40:13 +0530
+Started GET "/article" for 127.0.0.1 at 2019-06-24 17:40:28 +0530
+Started GET "/" for 127.0.0.1 at 2019-06-24 17:40:41 +0530
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 41ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+Started GET "/articles" for 127.0.0.1 at 2019-06-24 17:40:53 +0530
+Started GET "/articles/i" for 127.0.0.1 at 2019-06-24 17:41:03 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"i"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/articles/power" for 127.0.0.1 at 2019-06-24 17:41:11 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"power"}
+  [1m[36mArticle Load (1.9ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 1.9ms)
+Started GET "/articles/3" for 127.0.0.1 at 2019-06-24 17:41:16 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:44:57 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 278ms (Views: 200.5ms | ActiveRecord: 19.3ms)
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:47:08 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-24 17:57:47 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 32ms (Views: 1.7ms | ActiveRecord: 9.0ms)
+Started GET "/articles/4" for 127.0.0.1 at 2019-06-24 17:57:51 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+Started GET "/articles/5" for 127.0.0.1 at 2019-06-24 17:58:10 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/articles/4" for 127.0.0.1 at 2019-06-24 17:58:13 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.6ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-24 17:58:58 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:59:31 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"New article", "text"=>"Published yesterday"}, "commit"=>"Save"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (3.2ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "New article"], ["text", "Published yesterday"], ["created_at", "2019-06-24 12:29:31.438269"], ["updated_at", "2019-06-24 12:29:31.438269"]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.9ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 17:59:52 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"New article", "text"=>"Published yesterday"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "New article"], ["text", "Published yesterday"], ["created_at", "2019-06-24 12:29:52.098592"], ["updated_at", "2019-06-24 12:29:52.098592"]]
+  [1m[35m (74.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/5
+Completed 302 Found in 83ms (ActiveRecord: 75.2ms)
+Started GET "/articles/5" for 127.0.0.1 at 2019-06-24 17:59:52 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+Started GET "/articles/6" for 127.0.0.1 at 2019-06-24 18:00:03 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-24 18:00:06 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-24 18:00:36 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"article 6", "text"=>"sixth article !!"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "article 6"], ["text", "sixth article !!"], ["created_at", "2019-06-24 12:30:36.427364"], ["updated_at", "2019-06-24 12:30:36.427364"]]
+  [1m[35m (104.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 110ms (ActiveRecord: 105.2ms)
+Started GET "/articles/6" for 127.0.0.1 at 2019-06-24 18:00:36 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (46.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (41.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-25 10:31:57 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 72ms (ActiveRecord: 16.9ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-25 10:32:01 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 273ms (Views: 271.1ms | ActiveRecord: 0.0ms)
+Started GET "/articles/1" for 127.0.0.1 at 2019-06-25 10:32:06 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (23.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20190625101312)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (406.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "commenter" character varying, "body" text, "article_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3bf61a60d3"
+FOREIGN KEY ("article_id")
+  REFERENCES "articles" ("id")
+)[0m
+  [1m[35m (70.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_article_id" ON "comments"  ("article_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190625101312"]]
+  [1m[35m (28.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4364655255187519005)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4364655255187519005)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles" for 127.0.0.1 at 2019-06-25 18:15:04 +0530
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 415ms (Views: 387.3ms | ActiveRecord: 12.7ms)
+Started GET "/assets/application-8f795d832dd72aa88718936494787860e843da5369e86f734282be69f7989b96.js" for 127.0.0.1 at 2019-06-25 18:15:04 +0530
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-25 18:15:56 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (8.0ms)
+  Rendered articles/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 31ms (Views: 15.3ms | ActiveRecord: 4.9ms)
+Started GET "/articles" for 127.0.0.1 at 2019-06-25 18:16:00 +0530
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+Started GET "/articles/new" for 127.0.0.1 at 2019-06-25 18:16:04 +0530
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.0ms)
+  Rendered articles/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+Started POST "/articles" for 127.0.0.1 at 2019-06-25 18:16:26 +0530
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "article"=>{"title"=>"article1", "text"=>"article11"}, "commit"=>"Create Article"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (64.9ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "article1"], ["text", "article11"], ["created_at", "2019-06-25 12:46:26.571163"], ["updated_at", "2019-06-25 12:46:26.571163"]]
+  [1m[35m (32.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/7
+Completed 302 Found in 108ms (ActiveRecord: 97.5ms)
+Started GET "/articles/7" for 127.0.0.1 at 2019-06-25 18:16:26 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.html.erb (55.1ms)
+  Rendered articles/show.html.erb within layouts/application (70.5ms)
+Completed 200 OK in 79ms (Views: 68.0ms | ActiveRecord: 6.3ms)
+Started POST "/articles/7/comments" for 127.0.0.1 at 2019-06-25 18:16:32 +0530
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"commenter"=>"ads", "body"=>"sadfaf"}, "commit"=>"Create Comment", "article_id"=>"7"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("commenter", "body", "article_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["commenter", "ads"], ["body", "sadfaf"], ["article_id", 7], ["created_at", "2019-06-25 12:46:32.099012"], ["updated_at", "2019-06-25 12:46:32.099012"]]
+  [1m[35m (111.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles/7
+Completed 302 Found in 122ms (ActiveRecord: 113.2ms)
+Started GET "/articles/7" for 127.0.0.1 at 2019-06-25 18:16:32 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  Rendered collection of comments/_comment.html.erb [1 times] (1.7ms)
+  Rendered comments/_form.html.erb (2.9ms)
+  Rendered articles/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 1.1ms)
+Started GET "/articles" for 127.0.0.1 at 2019-06-25 18:16:33 +0530
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  Rendered articles/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5011.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "library_test"[0m
+Started GET "/articles" for 127.0.0.1 at 2019-06-25 18:18:19 +0530
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  Rendered articles/index.html.erb within layouts/application (61.1ms)
+Completed 200 OK in 299ms (Views: 265.7ms | ActiveRecord: 20.8ms)
+Started GET "/articles" for 127.0.0.1 at 2019-06-25 18:18:22 +0530
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = $1[0m  [["article_id", 7]]
+  Rendered articles/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 1.5ms)
